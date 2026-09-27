@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Marşrut — Avto Salon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0d0f12; --text:#e8eaed; --muted:#7d8590;
+    --accent:#3a86ff; --line:#1e2228;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  html{scroll-padding-top:env(safe-area-inset-top,0px); scroll-behavior:smooth;}
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--bg); color:var(--text); font-family:'Space Grotesk', Arial, sans-serif; overflow-x:hidden;}
+  header{display:flex; justify-content:space-between; align-items:center; padding:22px 28px; max-width:960px; margin:0 auto;}
+  .logo{font-size:1.2rem; font-weight:600; letter-spacing:0.5px;}
+  nav a{color:var(--muted); text-decoration:none; margin-left:24px; font-size:0.9rem; position:relative;}
+  nav a::after{content:''; position:absolute; left:0; bottom:-3px; width:0; height:1px; background:var(--accent); transition:width .3s ease;}
+  nav a:hover{color:var(--text);} nav a:hover::after{width:100%;}
+
+  .hero{padding:50px 28px 60px; max-width:960px; margin:0 auto;}
+  .hero h1{font-size:clamp(2rem,6vw,3.3rem); font-weight:600; max-width:16ch; line-height:1.15;
+    opacity:0; transform:translateY(16px); animation:fadeUp .7s ease forwards .1s;}
+  .hero p{color:var(--muted); margin-top:18px; max-width:48ch;
+    opacity:0; transform:translateY(16px); animation:fadeUp .7s ease forwards .3s;}
+  @keyframes fadeUp{to{opacity:1; transform:translateY(0);}}
+
+  .stats{display:flex; gap:40px; margin-top:36px; flex-wrap:wrap;}
+  .stat{opacity:0; transform:translateY(16px); animation:fadeUp .7s ease forwards;}
+  .stat:nth-child(1){animation-delay:.45s;} .stat:nth-child(2){animation-delay:.55s;} .stat:nth-child(3){animation-delay:.65s;}
+  .stat b{font-size:1.7rem; display:block; color:var(--accent);}
+  .stat span{color:var(--muted); font-size:0.85rem;}
+
+  section{padding:50px 28px; max-width:960px; margin:0 auto; border-top:1px solid var(--line);}
+  .section-title{font-size:1.5rem; font-weight:600; margin-bottom:28px;}
+
+  .reveal{opacity:0; transform:translateY(22px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in-view{opacity:1; transform:translateY(0);}
+
+  .cars{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  .car{border:1px solid var(--line); padding:20px; transition:border-color .3s ease, transform .3s ease;}
+  .car:hover{border-color:var(--accent); transform:translateY(-4px);}
+  .car .model{font-weight:600; font-size:1.05rem;}
+  .car .year{color:var(--muted); font-size:0.85rem; margin-top:4px;}
+  .car .price{color:var(--accent); font-weight:600; margin-top:14px;}
+
+  .btn{display:inline-block; margin-top:30px; padding:14px 30px; background:var(--accent); color:#0d0f12; text-decoration:none; font-weight:600; transition:transform .25s ease, box-shadow .25s ease;}
+  .btn:hover{transform:translateY(-2px); box-shadow:0 10px 22px -8px rgba(58,134,255,.5);}
+
+  footer{padding:36px 28px; color:var(--muted); font-size:0.9rem; max-width:960px; margin:0 auto;}
+
+  @media (max-width:700px){ .cars{grid-template-columns:1fr;} nav a{margin-left:14px; font-size:0.8rem;} .stats{gap:28px;} }
+  @media (prefers-reduced-motion:reduce){
+    *{animation-duration:.01ms !important; transition-duration:.01ms !important;}
+    .hero h1, .hero p, .stat{opacity:1 !important; transform:none !important;}
+    .reveal{opacity:1 !important; transform:none !important;}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">MARŞRUT</div>
+  <nav><a href="#satista">Satışda</a><a href="#elaqe">Əlaqə</a></nav>
+</header>
+
+<div class="hero">
+  <h1>Etibarlı avtomobil, şəffaf qiymət</h1>
+  <p>Yoxlanılmış, tam sənədləşdirilmiş ikinci əl avtomobillər. Hər maşın satışdan əvvəl texniki baxışdan keçir.</p>
+  <div class="stats">
+    <div class="stat"><b data-target="340">0</b><span>satılmış avtomobil</span></div>
+    <div class="stat"><b data-target="7">0</b><span>il bazarda təcrübə</span></div>
+    <div class="stat"><b data-target="12">0</b><span>ay zəmanət</span></div>
+  </div>
+</div>
+
+<section id="satista">
+  <div class="section-title reveal">Satışda olanlar</div>
+  <div class="cars">
+    <div class="car reveal">
+      <div class="model">Hyundai Elantra</div>
+      <div class="year">2019 · 68,000 km</div>
+      <div class="price">21,500 ₼</div>
+    </div>
+    <div class="car reveal">
+      <div class="model">Kia Sportage</div>
+      <div class="year">2020 · 54,000 km</div>
+      <div class="price">32,800 ₼</div>
+    </div>
+    <div class="car reveal">
+      <div class="model">Toyota Camry</div>
+      <div class="year">2018 · 81,000 km</div>
+      <div class="price">28,900 ₼</div>
+    </div>
+  </div>
+  <a class="btn" href="#elaqe">Bütün elanları gör</a>
+</section>
+
+<section id="elaqe">
+  <div class="section-title reveal">Əlaqə</div>
+  <p class="reveal" style="color:var(--muted)">Heydər Əliyev prospekti 88, Bakı<br>Hər gün 09:00–19:00<br>+994 70 111 22 33</p>
+</section>
+
+<footer>© Marşrut Avto Salon</footer>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in-view'); io.unobserve(e.target); } });
+  }, {threshold:0.15});
+  els.forEach(el=>io.observe(el));
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.stat b').forEach(el=>{
+    const target = parseInt(el.dataset.target,10);
+    if(reduceMotion){ el.textContent = target; return; }
+    let start=null; const duration=1100;
+    function step(ts){
+      if(!start) start=ts;
+      const progress = Math.min((ts-start)/duration, 1);
+      el.textContent = Math.floor(progress*target);
+      if(progress<1) requestAnimationFrame(step); else el.textContent = target;
+    }
+    setTimeout(()=>requestAnimationFrame(step), 500);
+  });
+</script>
+</body>
+</html>
